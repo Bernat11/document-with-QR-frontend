@@ -1,0 +1,14 @@
+#form {
+  margin-top: 20px;
+}
+
+#imageContainer {
+  width: 300px;
+  height: 250px;
+}
+
+.cortarImg {
+    width:  200px;
+    height: 200px;
+    object-fit: cover;
+}

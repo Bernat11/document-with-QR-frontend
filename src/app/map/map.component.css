@@ -1,0 +1,13 @@
+#contenedor {
+  margin-top: 60px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+agm-map {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  width: 100%;
+}

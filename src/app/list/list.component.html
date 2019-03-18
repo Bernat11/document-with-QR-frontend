@@ -1,0 +1,26 @@
+<!-- En un futuro: https://mdbootstrap.com/plugins/jquery/table-editor/ -->
+<div class="list-group" id=list>
+  <h1 class="display-4 mb-4 text-center">Geotags actuales</h1>
+  <div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Descripcion</th>
+        <th>Tipo</th>
+        <th class="w-5">Editar</th>
+        <th class="w-5">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let marker of markers; let i = index">
+        <td [routerLink]="['/ver', marker.id]"><a class="list-group-item list-group-item-action">{{marker.titulo}}</a></td>
+        <td>{{marker.descripcion}}</td>
+        <td>{{marker.tipo}}</td>
+        <td><a class="list-group-item list-group-item-action" (click)='editar(marker, i)'>Editar</a></td>
+        <td><a class="list-group-item list-group-item-action" (click)='eliminar(marker.id, i)'>Eliminar</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

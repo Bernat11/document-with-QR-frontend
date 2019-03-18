@@ -1,0 +1,35 @@
+<!-- <div class="row" id=cardsContainer>
+  <div id=markerCard *ngFor="let marker of markers" class="card text-white bg-secondary mx-auto" style="width: 18rem;">
+    <img id=imageContainer src={{marker.imagePath}} class="card-img-top" alt="120px" >
+    <div class="card-body">
+      <h5 class="card-title">{{marker.titulo}}</h5>
+      <p id=cardText class="card-text">{{marker.descripcion}}</p>
+      <a id=cardLink href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div> -->
+
+<h2 class="display-4 mb-4 text-center mt-3 h2">{{titulo}}</h2>
+<div class="row" id=cardsContainer>
+  <div id=markerCard  *ngFor="let marker of markers" class="hovereffect card mx-auto">
+      <img class="img-responsive" src={{marker.image}} class="cortarImg">
+      <div class="overlay">
+         <h2>{{marker.titulo}}</h2>
+         <a class="info" [routerLink]="['/ver', marker.id]">VER</a>
+      </div>
+  </div>
+</div>
+
+<!-- <h2 class="display-4 mb-4 text-center mt-3 h2">Algunos tags 2</h2>
+<div class="row" id=cardsContainer>
+  <div id=markerCard  *ngFor="let marker of markers" class="hovereffect card mx-auto">
+      <img class="img-responsive" src='getImage(marker.id)' class="cortarImg">
+      <div class="overlay">
+         <h2>Hola!</h2>
+         <a class="info" [routerLink]="['/ver', marker.id]">VER</a>
+      </div>
+  </div>
+</div> -->
+
+
+<!-- *ngFor="let image of imageToShow" -->
