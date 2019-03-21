@@ -8,17 +8,17 @@
         <th>Titulo</th>
         <th>Descripcion</th>
         <th>Tipo</th>
-        <th class="w-5">Editar</th>
         <th class="w-5">Eliminar</th>
+        <th class="w-5">Ver</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let marker of markers; let i = index">
-        <td [routerLink]="['/ver', marker.id]"><a class="list-group-item list-group-item-action">{{marker.titulo}}</a></td>
-        <td>{{marker.descripcion}}</td>
+        <td contenteditable="true" (keyup)="changeValue($event)" (blur)="updateTitulo(marker, i, $event)">{{marker.titulo}}</td>
+        <td contenteditable="true" (keyup)="changeValue($event)" (blur)="updateDescription(marker, i, $event)">{{marker.descripcion}}</td>
         <td>{{marker.tipo}}</td>
-        <td><a class="list-group-item list-group-item-action" (click)='editar(marker, i)'>Editar</a></td>
         <td><a class="list-group-item list-group-item-action" (click)='eliminar(marker.id, i)'>Eliminar</a></td>
+        <td [routerLink]="['/ver', marker.id]"><a class="list-group-item list-group-item-action" (click)='editar(marker, i)'>Ver</a></td>
       </tr>
     </tbody>
   </table>

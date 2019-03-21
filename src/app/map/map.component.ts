@@ -15,6 +15,7 @@ export class MapComponent implements OnInit {
   private titulo: string;
   private center_lat: number = 41.387808;
   private center_lng: number = 2.1691757;
+  private iconLocation:String = "../../assets/icon.png";
 
   private actualLat: number;
   private actualLng: number;

@@ -5,7 +5,12 @@
 <div id=contenedor>
   <h1 class="display-4 mb-4 text-center">{{titulo}}</h1>
   <agm-map [zoom]="13" [latitude]="center_lat" [longitude]="center_lng" (mapClick)="placeMarker($event)">
-    <agm-marker *ngFor="let marker of markers" [latitude]=marker.latitud [longitude]=marker.longitud></agm-marker>
+    <agm-marker *ngFor="let marker of markers" [latitude]=marker.latitud [longitude]=marker.longitud [iconUrl]="iconLocation">
+      <agm-info-window [disableAutoPan]="true">
+          <strong>{{marker.titulo}}<br></strong>
+          {{marker.descripcion}}
+        </agm-info-window>
+    </agm-marker>
     <!-- <agm-marker [latitude]="41.387808" [longitude]="2.1691757"></agm-marker>
     <agm-marker [latitude]="41.3875837" [longitude]="2.1752316"></agm-marker> -->
   </agm-map>

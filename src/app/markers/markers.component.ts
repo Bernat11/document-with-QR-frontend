@@ -23,8 +23,18 @@ export class MarkersComponent implements OnInit {
   constructor(private markerService: MarkerService, private imageService: ImageService, private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    this.markerService.getMarkers().subscribe(
-      markers => {this.markers = markers;
+    this.markerService.getMarkers().subscribe(markers => {
+      this.markers = markers;
+      this.markers.sort(function (a, b) {
+        if (a.id > b.id) {
+          return 1;
+        }
+        if (a.id < b.id) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
       this.getImages()
     });
   }
@@ -50,5 +60,7 @@ export class MarkersComponent implements OnInit {
         reader.readAsDataURL(image);
      }
   }
+
+
 
 }

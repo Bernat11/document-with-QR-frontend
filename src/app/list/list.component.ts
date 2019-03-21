@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
 
   markers: Marker[];
   private marker: Marker = new Marker();
+  editField: string;
 
   constructor(private markerService: MarkerService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -28,10 +29,25 @@ export class ListComponent implements OnInit {
     this.markers.splice(index,1)
   }
 
-  editar(marker: Marker, index:number){
+  changeValue(event: any){
+    this.editField = event.target.textContent;
+  }
+
+  updateDescription(marker: Marker, index:number, event: any) {
+    const editField = event.target.textContent;
     console.log("editando el marker", marker)
-    marker.titulo = "EDITADO!"
-    marker.descripcion = "EDITADO!"
+    marker.descripcion = event.target.textContent;
+    // marker.titulo = "EDITADO!"
+    // marker.descripcion = "EDITADO!"
+    this.markerService.update(marker);
+  }
+
+  updateTitulo(marker: Marker, index:number, event: any) {
+    const editField = event.target.textContent;
+    console.log("editando el marker", marker)
+    marker.titulo = event.target.textContent;
+    // marker.titulo = "EDITADO!"
+    // marker.descripcion = "EDITADO!"
     this.markerService.update(marker);
   }
 
