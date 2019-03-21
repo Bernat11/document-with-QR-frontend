@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GlobalsService {
-  env: string = '192.168.1.36'
+  env: string = '192.168.1.37'
 }

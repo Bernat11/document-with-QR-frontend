@@ -47,7 +47,7 @@ export class FormComponent {
     this.formService.create(this.marker, this.imageToUpload).subscribe(id => {
       this.formService.createQR(id).subscribe(qrimgage => {
         this.createImageFromBlob(qrimgage)
-        this.router.navigate(['/ver/', id])
+        // this.router.navigate(['/ver/', id])
       })
       // this.router.navigate(['/ver', id]);
     })

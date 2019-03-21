@@ -19,42 +19,38 @@ export class MarkersComponent implements OnInit {
   imageToShow: any;
   arrayImagen: any[];
   private marker: Marker = new Marker();
+  private idToIndexMap = new Map();
 
   constructor(private markerService: MarkerService, private imageService: ImageService, private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.markerService.getMarkers().subscribe(markers => {
       this.markers = markers;
-      this.markers.sort(function (a, b) {
-        if (a.id > b.id) {
-          return 1;
-        }
-        if (a.id < b.id) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      });
+      this.setIndexToId()
       this.getImages()
     });
   }
 
-  getImages(){
+  setIndexToId(){
     let index:number = 0;
     for(let marker of this.markers){
+      this.idToIndexMap.set(marker.id, index);
+      index=index+1;
+    }
+  }
+
+  getImages(){
+    for(let marker of this.markers){
       this.imageService.getImageFromService(marker.imagePath).subscribe(image => {
-        this.createImageFromBlob(image, index, marker.id)
-        index=index+1;
+        this.createImageFromBlob(image, marker.id)
       })
     }
   }
 
-  createImageFromBlob(image: Blob, index:number, id:number) {
+  createImageFromBlob(image: Blob, id:number) {
      let reader = new FileReader();
      reader.addEventListener("load", () => {
-        console.log("id",id)
-        console.log("index",index)
-        this.markers[index].image = reader.result;
+        this.markers[this.idToIndexMap.get(id)].image = reader.result;
      }, false);
      if (image) {
         reader.readAsDataURL(image);
