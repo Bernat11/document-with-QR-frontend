@@ -1,6 +1,13 @@
 <!-- En un futuro: https://mdbootstrap.com/plugins/jquery/table-editor/ -->
 <div class="list-group" id=list>
   <h1 class="display-4 mb-4 text-center">Geotags actuales</h1>
+
+  <div id=selector>
+    <select name="tipo" class="form-control mt-3" [(ngModel)]="tipo" (change)="markersByType(tipo, tipo)" [value]='Todos'>
+      <option *ngFor="let tipo of tipos" [value]='tipo'>{{tipo}}</option>
+    </select>
+  </div>
+
   <div class="container">
   <table class="table table-bordered">
     <thead>

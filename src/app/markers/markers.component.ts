@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Marker } from './marker';
 import { MarkerService } from './marker.service';
-import { ImageService } from './../markers/image.service';
-import { Observable } from "rxjs";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { GlobalsService } from './../globals.service';
 
 @Component({
   selector: 'app-markers',
@@ -13,50 +10,41 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class MarkersComponent implements OnInit {
 
-  titulo: String = "Algunos tags";
-  array: Array<any>;
   markers: Marker[];
   imageToShow: any;
   arrayImagen: any[];
-  private marker: Marker = new Marker();
-  private idToIndexMap = new Map();
+  private titulo: string = "Algunos marcadores";
+  private getMarkersEndpoints = new Map();
+  private tipo:string;
+  private tipos: String[] = [
+    "Todos",
+    "Monumento",
+    "Gastronomia",
+    "Arte urbano",
+    "Otra localizacion"
+  ];
 
-  constructor(private markerService: MarkerService, private imageService: ImageService, private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) { }
+  constructor(private markerService: MarkerService, private globals: GlobalsService){
+    this.getMarkersEndpoints.set("Todos","http://" + this.globals.env + ":8070/api/markers")
+    this.getMarkersEndpoints.set("Monumento","http://" + this.globals.env + ":8070/api/markers/find?tipo=Monumento")
+    this.getMarkersEndpoints.set("Arte urbano","http://" + this.globals.env + ":8070/api/markers/find?tipo=Arte urbano")
+    this.getMarkersEndpoints.set("Gastronomia","http://" + this.globals.env + ":8070/api/markers/find?tipo=Gastronomia")
+    this.getMarkersEndpoints.set("Otra localizacion","http://" + this.globals.env + ":8070/api/markers/find?tipo=Otra localizacion")
+
+  }
 
   ngOnInit() {
-    this.markerService.getMarkers().subscribe(markers => {
+    this.markersByType("Todos", "Todos")
+    this.tipo="Todos"
+  }
+
+  markersByType(type: string, titulo: string){
+    this.markerService.getMarkers(this.getMarkersEndpoints.get(type)).subscribe(markers => {
       this.markers = markers;
-      this.setIndexToId()
-      this.getImages()
+      this.markers = this.markerService.setIndexToId(markers)
+      this.markerService.getImages(markers)
+      this.titulo = titulo;
     });
   }
-
-  setIndexToId(){
-    let index:number = 0;
-    for(let marker of this.markers){
-      this.idToIndexMap.set(marker.id, index);
-      index=index+1;
-    }
-  }
-
-  getImages(){
-    for(let marker of this.markers){
-      this.imageService.getImageFromService(marker.imagePath).subscribe(image => {
-        this.createImageFromBlob(image, marker.id)
-      })
-    }
-  }
-
-  createImageFromBlob(image: Blob, id:number) {
-     let reader = new FileReader();
-     reader.addEventListener("load", () => {
-        this.markers[this.idToIndexMap.get(id)].image = reader.result;
-     }, false);
-     if (image) {
-        reader.readAsDataURL(image);
-     }
-  }
-
-
 
 }

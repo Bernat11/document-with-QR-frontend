@@ -3,6 +3,7 @@ import { MarkerService } from './../markers/marker.service';
 import { Marker } from './../markers/marker';
 import { Coordinate } from './coordinate';
 import { MapService } from './map.service';
+import { GlobalsService } from './../globals.service';
 
 @Component({
   selector: 'app-map',
@@ -24,13 +25,14 @@ export class MapComponent implements OnInit {
   coordenadas: Coordinate[];
   coordinate: Coordinate;
   // title: string = 'My first AGM project';
+  private backendEndpoint: string = 'http://' + this.globals.env + ':8070/api/markers';
 
-  constructor(private markerService: MarkerService, private mapService: MapService){
+  constructor(private markerService: MarkerService, private mapService: MapService, private globals:GlobalsService){
     this.titulo = mapService.titulo;
   }
 
   ngOnInit(){
-    this.markerService.getMarkers().subscribe(
+    this.markerService.getMarkers(this.backendEndpoint).subscribe(
       markers => {this.markers = markers;
         console.log(markers)
         // var index:number = 0;
