@@ -20,7 +20,6 @@ export class CardComponent implements OnInit {
   private backendEndpoint: string;
 
   constructor(private markerService: MarkerService, private imageService: ImageService, private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient, private globals: GlobalsService) {
-    // this.backendEndpoint = 'http://192.168.1.40:8070/api/markers';
     this.backendEndpoint = 'http://' + this.globals.env + ':8070/api/markers';
   }
 

@@ -1,40 +1,77 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" routerLink="/">Documenta con QR</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"
-    align="center" style="justify-content: center">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/crear">Crea un tag<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/listar">Editar geotags<span class="sr-only"></span></a>
-          </li>
-          <li class="nav-item dropdown">
-              <a class="nav-link" id="navbarDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtrar tags</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" routerLink="/listar/tipo">Monumentos</a>
-                  <a class="dropdown-item" routerLink="/listar/tipo">Gastronomia</a>
-                  <a class="dropdown-item" routerLink="/listar/tipo">Arte urbano</a>
-                  <a class="dropdown-item" routerLink="/listar/tipo">Otros</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" routerLink="/">Mas visitados</a>
-                  <a class="dropdown-item" routerLink="/">Mejor puntuados</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" routerLink="/">Mas recientes</a>
-                  <a class="dropdown-item" routerLink="/">Mas proximos</a>
-              </div>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href={{backendEndpoint}} target="_blank">Documentacion API<span class="sr-only"></span></a>
-          </li>
-        </ul>
+<div>
+  <nav id=barra class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class=" lateraldiv">
+      <a class="navbar-brand logo-container" routerLink="/"><img src="../assets/logo.png" alt="" /></a>
     </div>
-    <a class="navbar-brand" routerLink="/">Iniciar sesion</a>
-    <a class="navbar-brand" routerLink="/">Crear cuenta</a>
-</nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"
+      align="center" style="justify-content: center; margin:auto">
+          <ul class="navbar-nav">
+            <div class="item">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/">VER<span class="sr-only">(current)</span></a>
+              </li>
+            </div>
+            <div class="item">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/crear">CREA<span class="sr-only">(current)</span></a>
+              </li>
+            </div>
+            <div class="item">
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/listar">EDITA<span class="sr-only"></span></a>
+              </li>
+            </div>
+            <!-- <div class="item">
+              <li class="nav-item dropdown">
+                  <a class="nav-link" id="navbarDropdown" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">FILTRA</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" routerLink="/">Mas visitados</a>
+                      <a class="dropdown-item" routerLink="/">Mejor puntuados</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" routerLink="/">Mas recientes</a>
+                      <a class="dropdown-item" routerLink="/">Mas proximos</a>
+                  </div>
+              </li>
+            </div> -->
+            <!-- <div class="navbar-nav-div"></div> -->
+            <div class="item">
+              <li class="nav-item">
+                  <a class="nav-link" href={{backendEndpoint}} target="_blank">DOCUMENTACION<span class="sr-only"></span></a>
+              </li>
+            </div>
+            <div class="item">
+              <li class="nav-item">
+                  <a class="nav-link" target="_blank">SOBRE MI<span class="sr-only"></span></a>
+              </li>
+            </div>
+          </ul>
+      </div>
+      <div class="lateraldiv">
+        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                    <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+                    <li class="dropdown order-1">
+                        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right mt-2">
+                           <li class="px-3 py-2">
+                               <form class="form" role="form">
+                                    <div class="form-group">
+                                        <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a></small>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+        </div>
+  </nav>
+</div>

@@ -4,9 +4,19 @@
     object-fit: cover;
 }
 
+.titulo{
+  margin-top: 76px;
+}
+
+#contenedor-externo{
+  margin-top: 60px;
+  /* margin-left: 50%; */
+  margin-bottom: 30px;
+}
+
 #cardsContainer {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -20,10 +30,7 @@
   width:  200px;
   height: 200px;
   margin-bottom: 30px;
-}
-
-#imageContainer {
-
+  box-shadow: 5px 5px 8px #888888;
 }
 
 #cardLink {

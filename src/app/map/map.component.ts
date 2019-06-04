@@ -4,6 +4,7 @@ import { Marker } from './../markers/marker';
 import { Coordinate } from './coordinate';
 import { MapService } from './map.service';
 import { GlobalsService } from './../globals.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -27,7 +28,7 @@ export class MapComponent implements OnInit {
   // title: string = 'My first AGM project';
   private backendEndpoint: string = 'http://' + this.globals.env + ':8070/api/markers';
 
-  constructor(private markerService: MarkerService, private mapService: MapService, private globals:GlobalsService){
+  constructor(private markerService: MarkerService, private mapService: MapService, private globals:GlobalsService, private router:Router){
     this.titulo = mapService.titulo;
   }
 
@@ -62,6 +63,10 @@ export class MapComponent implements OnInit {
   sendCoordinate(coordinate: Coordinate){
     console.log(coordinate)
     this.mapService.sendCoordinate(coordinate);
+  }
+
+  redirectToCard(id:number){
+    this.router.navigate(['/ver/', id])
   }
 
 }

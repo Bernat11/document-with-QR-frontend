@@ -18,18 +18,18 @@ export class MarkersComponent implements OnInit {
   private tipo:string;
   private tipos: String[] = [
     "Todos",
-    "Monumento",
+    "Monumentos",
     "Gastronomia",
     "Arte urbano",
-    "Otra localizacion"
+    "Otras localizaciones"
   ];
 
   constructor(private markerService: MarkerService, private globals: GlobalsService){
     this.getMarkersEndpoints.set("Todos","http://" + this.globals.env + ":8070/api/markers")
-    this.getMarkersEndpoints.set("Monumento","http://" + this.globals.env + ":8070/api/markers/find?tipo=Monumento")
+    this.getMarkersEndpoints.set("Monumentos","http://" + this.globals.env + ":8070/api/markers/find?tipo=Monumento")
     this.getMarkersEndpoints.set("Arte urbano","http://" + this.globals.env + ":8070/api/markers/find?tipo=Arte urbano")
     this.getMarkersEndpoints.set("Gastronomia","http://" + this.globals.env + ":8070/api/markers/find?tipo=Gastronomia")
-    this.getMarkersEndpoints.set("Otra localizacion","http://" + this.globals.env + ":8070/api/markers/find?tipo=Otra localizacion")
+    this.getMarkersEndpoints.set("Otras localizaciones","http://" + this.globals.env + ":8070/api/markers/find?tipo=Otra localizacion")
 
   }
 

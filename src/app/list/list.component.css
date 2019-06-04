@@ -1,12 +1,29 @@
 #list {
-  margin-top: 60px;
+  margin-top: 80px;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 80px;
+}
+
+body{
+  background-image: url('../../assets/listar-background7.png');
+}
+
+table{
+  background-color: rgba(255,255,255,1);
+  opacity: 0.9;
 }
 
 #selector {
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 50px;
+}
+
+.eliminar:hover   {
+  background-color: #FF7C7C;
+}
+
+.ver:hover {
+  background-color: #7CBEFF;
 }

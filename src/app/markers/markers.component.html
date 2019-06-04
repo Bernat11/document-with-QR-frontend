@@ -9,21 +9,23 @@
   </div>
 </div> -->
 
-<h2 class="display-4 mb-4 text-center mt-3 h2">{{titulo}}</h2>
+<div id=contenedor-externo>
+  <h2 class="display-4 mb-4 text-center titulo">{{titulo}}</h2>
 
-<div id=selector>
-  <select name="tipo" class="form-control mt-3" [(ngModel)]="tipo" (change)="markersByType(tipo, tipo)" [value]='Todos'>
-    <option *ngFor="let tipo of tipos" [value]='tipo'>{{tipo}}</option>
-  </select>
-</div>
+  <div id=selector>
+    <select name="tipo" class="form-control mt-3" [(ngModel)]="tipo" (change)="markersByType(tipo, tipo)" [value]='Todos'>
+      <option *ngFor="let tipo of tipos" [value]='tipo'>{{tipo}}</option>
+    </select>
+  </div>
 
-<div class="row" id=cardsContainer>
-  <div id=markerCard  *ngFor="let marker of markers" class="hovereffect card mx-auto">
-      <img class="img-responsive" src={{marker.image}} class="cortarImg">
-      <div class="overlay">
-         <h2>{{marker.titulo}}</h2>
-         <a class="info" [routerLink]="['/ver', marker.id]">VER</a>
-      </div>
+  <div class="row" id=cardsContainer>
+    <div id=markerCard  *ngFor="let marker of markers" class="hovereffect card mx-auto">
+        <img class="img-responsive" src={{marker.image}} class="cortarImg">
+        <div class="overlay">
+           <h2>{{marker.titulo}}</h2>
+           <a class="info" [routerLink]="['/ver', marker.id]">VER</a>
+        </div>
+    </div>
   </div>
 </div>
 

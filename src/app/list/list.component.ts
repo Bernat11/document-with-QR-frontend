@@ -4,6 +4,7 @@ import { MarkerService } from './../markers/marker.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormService } from './../form/form.service';
 import { GlobalsService } from './../globals.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -20,18 +21,18 @@ export class ListComponent implements OnInit {
   private tipo:string;
   private tipos: String[] = [
     "Todos",
-    "Monumento",
+    "Monumentos",
     "Gastronomia",
     "Arte urbano",
-    "Otra localizacion"
+    "Otras localizaciones"
   ];
 
   constructor(private markerService: MarkerService, private router: Router, private activatedRoute: ActivatedRoute, private globals:GlobalsService) {
     this.getMarkersEndpoints.set("Todos","http://" + this.globals.env + ":8070/api/markers")
-    this.getMarkersEndpoints.set("Monumento","http://" + this.globals.env + ":8070/api/markers/find?tipo=Monumento")
+    this.getMarkersEndpoints.set("Monumentos","http://" + this.globals.env + ":8070/api/markers/find?tipo=Monumento")
     this.getMarkersEndpoints.set("Arte urbano","http://" + this.globals.env + ":8070/api/markers/find?tipo=Arte urbano")
     this.getMarkersEndpoints.set("Gastronomia","http://" + this.globals.env + ":8070/api/markers/find?tipo=Gastronomia")
-    this.getMarkersEndpoints.set("Otra localizacion","http://" + this.globals.env + ":8070/api/markers/find?tipo=Otra localizacion")
+    this.getMarkersEndpoints.set("Otras localizaciones","http://" + this.globals.env + ":8070/api/markers/find?tipo=Otra localizacion")
   }
 
   ngOnInit() {
@@ -49,8 +50,27 @@ export class ListComponent implements OnInit {
 
   eliminar(id:number, index:number){
     console.log("borrando el marker", id)
-    this.markerService.delete(id);
-    this.markers.splice(index,1)
+    swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás deshacer los cambios!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar'
+    }).then((result) => {
+      if (result.value) {
+        swal.fire(
+          '¡Borrado!',
+          'El archivo ha sido borrado.',
+          'success'
+        )
+        this.markerService.delete(id);
+        this.markers.splice(index,1)
+      }
+    })
+
   }
 
   changeValue(event: any){

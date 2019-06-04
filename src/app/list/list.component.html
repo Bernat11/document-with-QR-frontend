@@ -9,7 +9,7 @@
   </div>
 
   <div class="container">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-light">
     <thead>
       <tr>
         <th>Titulo</th>
@@ -24,8 +24,8 @@
         <td contenteditable="true" (keyup)="changeValue($event)" (blur)="updateTitulo(marker, i, $event)">{{marker.titulo}}</td>
         <td contenteditable="true" (keyup)="changeValue($event)" (blur)="updateDescription(marker, i, $event)">{{marker.descripcion}}</td>
         <td>{{marker.tipo}}</td>
-        <td><a class="list-group-item list-group-item-action" (click)='eliminar(marker.id, i)'>Eliminar</a></td>
-        <td [routerLink]="['/ver', marker.id]"><a class="list-group-item list-group-item-action" (click)='editar(marker, i)'>Ver</a></td>
+        <td><a class="list-group-item list-group-item-action eliminar" (click)='eliminar(marker.id, i)'>Eliminar</a></td>
+        <td [routerLink]="['/ver', marker.id]"><a class="list-group-item list-group-item-action ver" (click)='editar(marker, i)'>Ver</a></td>
       </tr>
     </tbody>
   </table>

@@ -1,14 +1,83 @@
 #form {
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  /* box-shadow: inset 0 0 20px #000000; */
+}
+
+#btn-descarga{
   margin-top: 20px;
 }
+
+#inputbtn{
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-bottom: 20px; */
+}
+
+.external-container{
+    background-image: url('../../assets/ver-background7.png');
+    /* background-image: red; */
+ }
+
+/* #input {
+  background-color: rgba(50,50,50,0.3);
+} */
 
 #imageContainer {
   width: 300px;
   height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+#selector{
+  margin-top: 20px;
+  text-align: left;
 }
 
 .cortarImg {
     width:  200px;
     height: 200px;
     object-fit: cover;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border: 1px solid red;
+}
+
+
+
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  /* position: fixed; */
+  /* z-index: 1;
+  top: 0; */
+  /* overflow-x: hidden; */
+}
+
+/* Control the left side */
+.left {
+  margin-top: 56px;
+  left: 0;
+  position: fixed;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  float: right;
+}
+
+.alert{
+  color: red;
+  padding: 0px;
+  margin: 0px;
+  font-size: 10pt;
 }

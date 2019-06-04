@@ -24,6 +24,7 @@
     "core-js": "^2.5.4",
     "npm-install-all": "^1.1.21",
     "rxjs": "^6.4.0",
+    "sweetalert2": "^8.11.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

@@ -21,6 +21,7 @@ import { CardComponent } from './card/card.component';
 import { MapService } from './map/map.service';
 
 import { GlobalsService } from './globals.service';
+import { FullmapComponent } from './fullmap/fullmap.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GlobalsService } from './globals.service';
     PageNotFoundComponent,
     ListComponent,
     CardComponent,
+    FullmapComponent,
   ],
   imports: [
     HttpClientModule,

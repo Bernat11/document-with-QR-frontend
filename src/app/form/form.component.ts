@@ -7,6 +7,7 @@ import { Coordinate } from './../map/coordinate';
 import { MapService } from './../map/map.service';
 import { Subscription } from 'rxjs';
 import { FormService } from './form.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -30,7 +31,7 @@ export class FormComponent {
     "Monumento",
     "Gastronomia",
     "Arte urbano",
-    "Otra localizacion"
+    "Otras localizaciones"
   ]
 
   constructor(private markerService: MarkerService, private router: Router, private activatedRoute: ActivatedRoute,
@@ -80,6 +81,10 @@ export class FormComponent {
      if (image) {
         reader.readAsDataURL(image);
      }
+  }
+
+  onSubmit(form){
+    console.log(form);
   }
 
 

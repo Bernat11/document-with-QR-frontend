@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MapService } from './../map/map.service';
 import { Coordinate } from './../map/coordinate';
 import { Observable, Subject, BehaviorSubject } from "rxjs";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { GlobalsService } from './../globals.service';
 
 @Injectable({
@@ -35,9 +35,10 @@ export class FormService {
     console.log(id)
     var url:string = 'http://' + this.globals.env + ':4200/ver/' + id;
     const getheaders = new HttpHeaders({'url':url,'height':'300','width':'300','id':String(id)});
-    return this.http.get('http://' + this.globals.env + ':8070/api/encodeurl',
-      {headers: getheaders, responseType: 'blob'}
-    )
+
+    let params = new HttpParams().set("url",url).set("height", '300').set("width", '300').set("id", String(id));
+
+    return this.http.get('http://' + this.globals.env + ':8070/api/encodeurl',  {params: params, responseType: 'blob'})
   }
 
   // getQR(QR_UUID: String):Observable<Blob>{

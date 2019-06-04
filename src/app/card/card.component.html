@@ -2,6 +2,9 @@
   <div id=card class="card" style="width: 36rem;">
     <img class="card-img-top" src={{imageToShow}} alt="Card image cap">
     <div class="card-body">
+      <div id=card-title>
+        <h4>{{marker.titulo}} ({{marker.tipo}})</h4>
+      </div>
       <p class="card-text">{{marker.descripcion}}</p>
     </div>
     <!-- <ul class="list-group list-group-flush"> -->
@@ -13,4 +16,9 @@
       <a href="{{marker.link}}" target="_blank" rel="noopener noreferrer" class="card-link">{{marker.link}}</a>
     </div>
     <img class="card-img-bottom" src={{qrToShow}} alt="Card image cap">
+    <div class="card-btn">
+      <a href={{qrToShow}} download>
+        <button type="button" class="btn btn-primary btn-lg card-btn">Descarga el QR</button>
+      </a>
+    </div>
   </div>
